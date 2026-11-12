@@ -232,49 +232,15 @@ dotnet run --project tests/Takam.Tests
 
 הכל רץ על מחשב אחד. פקודת `update` מורידה קבצים מהאתר לתיקייה מקומית, מחלצת אותם וכותבת קובץ אינדקס אחד. שרת הווב טוען את הקובץ לזיכרון ומחפש בו.
 
-```mermaid
-flowchart LR
-    site[אתר התכ"ם<br/>API ציבורי]
-    subgraph machine[מחשב אחד]
-        cli[Takam.Cli<br/>rebuild / update ידני]
-        raw[(data/raw<br/>קובצי Word)]
-        idx[(data/index.json<br/>סעיפים ומטא-דאטה)]
-        web[Takam.Web<br/>SearchEngine בזיכרון]
-    end
-    user[דפדפן]
-    cli -->|הורדה| site
-    cli --> raw
-    cli --> idx
-    idx -->|טעינה| web
-    user --> web
-```
+![המצב היום: הכל על מחשב אחד](docs/architecture-today.svg)
 
 ### בקנה מידה גדול
 
 שני מסלולים נפרדים. **מסלול הכתיבה** מזהה שינויים באתר ומעדכן את האינדקס. **מסלול הקריאה** מגיש חיפושים למשתמשים. הם נפגשים רק באחסון.
 
-```mermaid
-flowchart TB
-    subgraph write[מסלול הכתיבה: סנכרון לילי]
-        eb[EventBridge<br/>תזמון לילי] --> det[Lambda: זיהוי שינויים]
-        det -->|רשימה ומהדורות| site[אתר התכ"ם]
-        det -->|השוואה| ddb[(DynamoDB<br/>קטלוג מהדורות)]
-        det -->|הודעה לכל מסמך שהשתנה| q[SQS FIFO<br/>+ תור כשלים]
-        q --> ing[Lambda workers<br/>הורדה וחילוץ]
-        ing --> s3[(S3<br/>Word, סעיפים)]
-        ing -->|כתיבה מותנית| ddb
-        ing --> indexer[Indexer]
-    end
-    subgraph read[מסלול הקריאה: חיפוש]
-        u[משתמשים] --> cf[CloudFront + WAF]
-        cf --> gw[API Gateway<br/>אימות, הגבלת קצב]
-        gw --> lb[Load balancer]
-        lb --> pods[Search pods ב-EKS<br/>3 עד 20, בשלושה אזורי זמינות]
-        pods --> redis[(Redis cluster<br/>מטמון תוצאות)]
-        pods --> os[(OpenSearch<br/>3 צמתים, רפליקות)]
-    end
-    indexer -->|כתיבה וחילוף alias| os
-```
+![ארכיטקטורה בקנה מידה גדול: מסלול כתיבה לילי ומסלול קריאה, עם אנימציה של הודעות ובקשות](docs/architecture-scaled.svg)
+
+בתרשים הנקודות הכתומות הן הודעות הסנכרון הלילי, הכחולות הן בקשות חיפוש של משתמשים, והירוקות הן פניות למטמון ולאינדקס. בתוך EKS מוצגים שישה pods פעילים, ושלושה מקווקווים שמסמלים pods ש‑HPA מוסיף כשהעומס עולה. בפועל המספר נע בין שלושה לעשרים. התרשים נמצא בקובץ `docs/architecture-scaled.svg` וניתן לעריכה ישירה.
 
 ### איך משווים מהדורות
 
