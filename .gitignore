@@ -1,0 +1,10 @@
+bin/
+obj/
+data/
+.vs/
+.idea/
+*.user
+TestResults/
+.DS_Store
+.env
+.claude/

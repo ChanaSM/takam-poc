@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>חיפוש בהוראות תכ"ם</title>
+  <link rel="stylesheet" href="/style.css?v=3">
+</head>
+<body>
+<nav class="rail" aria-label="ניווט">
+  <a href="/" title="דף הבית" aria-label="דף הבית">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M10 20v-6h4v6"/></svg>
+  </a>
+  <a href="#q" id="rail-search" title="חיפוש" aria-label="חיפוש">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+  </a>
+  <a href="https://takam.mof.gov.il" target="_blank" rel="noopener" title="האתר הרשמי" aria-label="האתר הרשמי">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+  </a>
+</nav>
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <span class="org">החשב הכללי</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="app">הוראות תכ"ם</span>
+      <span class="poc">POC לא רשמי</span>
+    </div>
+    <a class="pill" href="https://takam.mof.gov.il" target="_blank" rel="noopener">לאתר הרשמי</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>חיפוש בתוכן הוראות תכ"ם</h1>
+      <p>חיפוש בתוך הטקסט של ההוראות והודעות התעריפים, ברמת סעיף. האתר הרשמי מחפש רק בשם ההוראה ובמילות מפתח.</p>
+    </div>
+    <div class="hero-search">
+      <h2 class="label">חיפוש הוראות תכ"ם</h2>
+      <form id="search-form" class="searchbar" role="search">
+        <svg class="mag" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+        <input id="q" name="q" type="search" placeholder="למשל: חילוט ערבות" autocomplete="off" autofocus aria-label="מה לחפש">
+        <button type="submit">חיפוש</button>
+      </form>
+      <h2 class="label">דוגמאות לחיפוש</h2>
+      <div class="examples" id="examples"></div>
+    </div>
+  </section>
+
+  <main><div id="results"></div></main>
+  <footer id="status"></footer>
+</div>
+<script src="/app.js?v=2"></script>
+</body>
+</html>
