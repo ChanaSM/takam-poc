@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 560" width="680" height="560" role="img" font-family="Arial, 'Noto Sans Hebrew', 'Segoe UI', sans-serif">
-<title>ארכיטקטורה בקנה מידה גדול</title><desc>מסלול כתיבה לילי: EventBridge, Lambda, SQS, workers ו‑Indexer כותב ל‑OpenSearch. מסלול קריאה: משתמשים, CloudFront, API Gateway ו‑pods ב‑EKS בשלושה אזורי זמינות, עם Redis ו‑OpenSearch.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 580" width="680" height="580" role="img" font-family="Arial, 'Noto Sans Hebrew', 'Segoe UI', sans-serif">
+<title>ארכיטקטורה בקנה מידה גדול עם הגבלת קצב</title><desc>מסלול כתיבה לילי ומסלול קריאה. הגבלת קצב בשלושה מקומות: מקביליות ה‑workers, בקשות לאתר התכ"ם, ובקשות לכל משתמש. Redis מחזיק את המונים, כולל מספר המופעים הפעילים כרגע.</desc>
 <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#6b6a64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<rect width="680" height="560" rx="12" fill="#FAFAF7"/>
+<rect width="680" height="580" rx="12" fill="#FAFAF7"/>
 <text x="40" y="40" text-anchor="start" dominant-baseline="central" font-size="14" font-weight="600" fill="#444441">מסלול כתיבה: סנכרון לילי</text>
 <circle r="4" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="0.0s" repeatCount="indefinite" path="M141,95 H610 V256" keyPoints="0;1;1" keyTimes="0;0.36;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="0.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.36;0.37;1"/></circle>
 <circle r="4" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="0.45s" repeatCount="indefinite" path="M141,95 H610 V256" keyPoints="0;1;1" keyTimes="0;0.36;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="0.45s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.36;0.37;1"/></circle>
@@ -9,20 +9,30 @@
 <circle r="4" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="1.35s" repeatCount="indefinite" path="M141,95 H610 V256" keyPoints="0;1;1" keyTimes="0;0.36;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="1.35s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.36;0.37;1"/></circle>
 <circle r="4" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="1.8s" repeatCount="indefinite" path="M141,95 H610 V256" keyPoints="0;1;1" keyTimes="0;0.36;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="1.8s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.36;0.37;1"/></circle>
 <circle r="4" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="2.25s" repeatCount="indefinite" path="M141,95 H610 V256" keyPoints="0;1;1" keyTimes="0;0.36;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="2.25s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.36;0.37;1"/></circle>
+<circle r="3.5" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="3.9s" repeatCount="indefinite" path="M590,122 V235 H220 V217" keyPoints="0;1;1" keyTimes="0;0.3;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="3.9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.3;0.31;1"/></circle>
+<circle r="3.5" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="4.35s" repeatCount="indefinite" path="M590,122 V235 H220 V217" keyPoints="0;1;1" keyTimes="0;0.3;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="4.35s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.3;0.31;1"/></circle>
+<circle r="3.5" fill="#EF9F27" opacity="0"><animateMotion dur="10s" begin="4.8s" repeatCount="indefinite" path="M590,122 V235 H220 V217" keyPoints="0;1;1" keyTimes="0;0.3;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="4.8s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.3;0.31;1"/></circle>
+<circle r="3" fill="#444441" opacity="0"><animateMotion dur="10s" begin="2.2s" repeatCount="indefinite" path="M485,122 L410,163" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="2.2s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
+<circle r="3" fill="#444441" opacity="0"><animateMotion dur="10s" begin="2.9s" repeatCount="indefinite" path="M485,122 L410,163" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="2.9s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
+<circle r="3" fill="#444441" opacity="0"><animateMotion dur="10s" begin="3.6s" repeatCount="indefinite" path="M485,122 L410,163" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="3.6s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
+<circle r="3" fill="#444441" opacity="0"><animateMotion dur="10s" begin="4.3s" repeatCount="indefinite" path="M485,122 L410,163" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="4.3s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
+<circle r="3" fill="#444441" opacity="0"><animateMotion dur="10s" begin="5.0s" repeatCount="indefinite" path="M485,122 L410,163" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" begin="5.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
 <circle r="3.5" fill="#378ADD" opacity="0"><animateMotion dur="9s" begin="0.0s" repeatCount="indefinite" path="M112,485 H380 V456 H410" keyPoints="0;1;1" keyTimes="0;0.17;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="0.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.17;0.18;1"/></circle>
-<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="1.5s" repeatCount="indefinite" path="M380,425 V337" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="1.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
+<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="1.5s" repeatCount="indefinite" path="M380,425 V357" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="1.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
 <circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="1.5s" repeatCount="indefinite" path="M540,425 V347" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="1.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
 <circle r="3.5" fill="#378ADD" opacity="0"><animateMotion dur="9s" begin="1.0s" repeatCount="indefinite" path="M112,485 H380 V484 H410" keyPoints="0;1;1" keyTimes="0;0.17;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="1.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.17;0.18;1"/></circle>
-<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="2.5s" repeatCount="indefinite" path="M380,425 V337" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="2.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
+<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="2.5s" repeatCount="indefinite" path="M380,425 V357" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="2.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
 <circle r="3.5" fill="#378ADD" opacity="0"><animateMotion dur="9s" begin="2.0s" repeatCount="indefinite" path="M112,485 H380 V512 H410" keyPoints="0;1;1" keyTimes="0;0.17;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="2.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.17;0.18;1"/></circle>
-<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="3.5s" repeatCount="indefinite" path="M380,425 V337" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="3.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
+<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="3.5s" repeatCount="indefinite" path="M380,425 V357" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="3.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
 <circle r="3.5" fill="#378ADD" opacity="0"><animateMotion dur="9s" begin="3.0s" repeatCount="indefinite" path="M112,485 H380 V456 H458" keyPoints="0;1;1" keyTimes="0;0.17;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="3.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.17;0.18;1"/></circle>
-<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="4.5s" repeatCount="indefinite" path="M380,425 V337" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="4.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
+<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="4.5s" repeatCount="indefinite" path="M380,425 V357" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="4.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
 <circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="4.5s" repeatCount="indefinite" path="M540,425 V347" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="4.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
 <circle r="3.5" fill="#378ADD" opacity="0"><animateMotion dur="9s" begin="4.0s" repeatCount="indefinite" path="M112,485 H380 V484 H458" keyPoints="0;1;1" keyTimes="0;0.17;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="4.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.17;0.18;1"/></circle>
-<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="5.5s" repeatCount="indefinite" path="M380,425 V337" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="5.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
+<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="5.5s" repeatCount="indefinite" path="M380,425 V357" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="5.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
 <circle r="3.5" fill="#378ADD" opacity="0"><animateMotion dur="9s" begin="5.0s" repeatCount="indefinite" path="M112,485 H380 V512 H458" keyPoints="0;1;1" keyTimes="0;0.17;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="5.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.17;0.18;1"/></circle>
-<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="6.5s" repeatCount="indefinite" path="M380,425 V337" keyPoints="0;1;1" keyTimes="0;0.08;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="6.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.08;0.09;1"/></circle>
+<circle r="3.5" fill="#1D9E75" opacity="0"><animateMotion dur="9s" begin="6.5s" repeatCount="indefinite" path="M380,425 V357" keyPoints="0;1;1" keyTimes="0;0.09;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="6.5s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.09;0.1;1"/></circle>
+<circle r="3.5" fill="#E24B4A" opacity="0"><animateMotion dur="9s" begin="3.0s" repeatCount="indefinite" path="M280,512 V528 H75 V512" keyPoints="0;1;1" keyTimes="0;0.3;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="3.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.3;0.31;1"/></circle>
+<circle r="3.5" fill="#E24B4A" opacity="0"><animateMotion dur="9s" begin="7.0s" repeatCount="indefinite" path="M280,512 V528 H75 V512" keyPoints="0;1;1" keyTimes="0;0.3;1" calcMode="linear"/><animate attributeName="opacity" dur="9s" begin="7.0s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.01;0.3;0.31;1"/></circle>
 <rect x="40" y="70" width="100" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text x="90.0" y="88" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#3C3489">EventBridge</text>
 <text x="90.0" y="106" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">תזמון לילי</text>
@@ -34,7 +44,7 @@
 <text x="365.0" y="106" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#854F0B">תור + תור כשלים</text>
 <rect x="455" y="70" width="100" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text x="505.0" y="88" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#3C3489">Workers</text>
-<text x="505.0" y="106" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">Lambda ×N</text>
+<text x="505.0" y="106" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7" direction="rtl">עד 5 במקביל</text>
 <rect x="580" y="70" width="60" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text x="610.0" y="88" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#3C3489">אינדקס</text>
 <text x="610.0" y="106" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">Indexer</text>
@@ -45,15 +55,35 @@
 <rect x="165" y="165" width="110" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
 <text x="220.0" y="183" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">DynamoDB</text>
 <text x="220.0" y="201" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">קטלוג מהדורות</text>
-<rect x="455" y="165" width="100" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
-<text x="505.0" y="183" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">S3</text>
-<text x="505.0" y="201" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">Word וסעיפים</text>
+<rect x="290" y="165" width="140" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.8"/>
+<text x="360.0" y="183" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#444441">אתר התכ"ם</text>
+<text x="360.0" y="201" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A" direction="rtl">מוגבל: 2 בשנייה</text>
+<rect x="480" y="165" width="100" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="530.0" y="183" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">S3</text>
+<text x="530.0" y="201" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">Word וסעיפים</text>
 <line x1="220" y1="122" x2="220" y2="163" stroke="#6b6a64" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
-<line x1="505" y1="122" x2="505" y2="163" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="255" y1="122" x2="320" y2="163" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="485" y1="122" x2="410" y2="163" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="530" y1="122" x2="530" y2="163" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
 <line x1="610" y1="122" x2="610" y2="253" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
-<rect x="330" y="285" width="80" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
-<text x="370.0" y="303" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">Redis</text>
-<text x="370.0" y="321" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">מטמון</text>
+<line x1="470" y1="122" x2="428" y2="253" stroke="#0F6E56" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<polyline points="590,122 590,235 220,235 220,217" fill="none" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="500" y="226" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">עדכון אחרי אינדוקס</text>
+<rect x="290" y="255" width="140" height="100" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
+<text x="360" y="271" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">Redis</text>
+<text x="360" y="289" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="400" fill="#0F6E56">מטמון ומונים</text>
+<text x="360" y="309" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="400" fill="#0F6E56">מופעים פעילים</text>
+<rect x="312" y="318" width="16" height="10" rx="2" fill="#fff" stroke="#0F6E56" stroke-width="0.8"/>
+<rect x="312" y="318" width="16" height="10" rx="2" fill="#1D9E75" fill-opacity="0"><animate attributeName="fill-opacity" calcMode="discrete" dur="10s" repeatCount="indefinite" keyTimes="0;0.18;0.25;0.32;0.45;0.55;0.65;0.75" values="0;1;1;1;1;1;1;0"/></rect>
+<rect x="332" y="318" width="16" height="10" rx="2" fill="#fff" stroke="#0F6E56" stroke-width="0.8"/>
+<rect x="332" y="318" width="16" height="10" rx="2" fill="#1D9E75" fill-opacity="0"><animate attributeName="fill-opacity" calcMode="discrete" dur="10s" repeatCount="indefinite" keyTimes="0;0.18;0.25;0.32;0.45;0.55;0.65;0.75" values="0;0;1;1;1;1;0;0"/></rect>
+<rect x="352" y="318" width="16" height="10" rx="2" fill="#fff" stroke="#0F6E56" stroke-width="0.8"/>
+<rect x="352" y="318" width="16" height="10" rx="2" fill="#1D9E75" fill-opacity="0"><animate attributeName="fill-opacity" calcMode="discrete" dur="10s" repeatCount="indefinite" keyTimes="0;0.18;0.25;0.32;0.45;0.55;0.65;0.75" values="0;0;1;1;1;0;0;0"/></rect>
+<rect x="372" y="318" width="16" height="10" rx="2" fill="#fff" stroke="#0F6E56" stroke-width="0.8"/>
+<rect x="372" y="318" width="16" height="10" rx="2" fill="#1D9E75" fill-opacity="0"><animate attributeName="fill-opacity" calcMode="discrete" dur="10s" repeatCount="indefinite" keyTimes="0;0.18;0.25;0.32;0.45;0.55;0.65;0.75" values="0;0;0;1;1;0;0;0"/></rect>
+<rect x="392" y="318" width="16" height="10" rx="2" fill="#fff" stroke="#0F6E56" stroke-width="0.8"/>
+<rect x="392" y="318" width="16" height="10" rx="2" fill="#1D9E75" fill-opacity="0"><animate attributeName="fill-opacity" calcMode="discrete" dur="10s" repeatCount="indefinite" keyTimes="0;0.18;0.25;0.32;0.45;0.55;0.65;0.75" values="0;0;0;1;0;0;0;0"/></rect>
+<text x="360" y="342" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="400" fill="#0F6E56">אסימוני מגבלה</text>
 <rect x="440" y="255" width="200" height="90" rx="12" fill="none" stroke="#8a8980" stroke-width="0.8" stroke-dasharray="5 4"/>
 <text x="452" y="270" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">OpenSearch</text>
 <rect x="452" y="284" width="56" height="50" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.8"/>
@@ -73,10 +103,13 @@
 <text x="170.0" y="496" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">+ WAF</text>
 <rect x="230" y="460" width="100" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.8"/>
 <text x="280.0" y="478" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#3C3489">API Gateway</text>
-<text x="280.0" y="496" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">+ load balancer</text>
+<text x="280.0" y="496" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">מגבלה למשתמש</text>
 <line x1="112" y1="485" x2="123" y2="485" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
 <line x1="217" y1="485" x2="228" y2="485" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
 <line x1="332" y1="485" x2="353" y2="485" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="300" y1="458" x2="322" y2="357" stroke="#0F6E56" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<polyline points="280,512 280,528 75,528 75,514" fill="none" stroke="#E24B4A" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<text x="178" y="541" text-anchor="middle" dominant-baseline="central" font-size="12" font-weight="400" fill="#A32D2D" direction="rtl">429 נסה שוב</text>
 <rect x="355" y="425" width="285" height="110" rx="12" fill="none" stroke="#8a8980" stroke-width="0.8" stroke-dasharray="5 4"/>
 <text x="367" y="438" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">EKS cluster</text>
 <text x="362" y="456" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">a</text>
@@ -91,11 +124,13 @@
 <rect x="506" y="445" width="40" height="22" rx="4" fill="none" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
 <rect x="506" y="473" width="40" height="22" rx="4" fill="none" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
 <rect x="506" y="501" width="40" height="22" rx="4" fill="none" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
-<line x1="380" y1="423" x2="380" y2="337" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="380" y1="423" x2="380" y2="357" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
 <line x1="540" y1="423" x2="540" y2="347" stroke="#6b6a64" stroke-width="1.5" marker-end="url(#a)"/>
 <text x="560" y="456" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">הרחבה אוטומטית</text>
 <text x="560" y="476" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">לפי עומס</text>
-<circle cx="40" cy="548" r="4" fill="#EF9F27"/><text x="50" y="548" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">הודעת סנכרון</text>
-<circle cx="150" cy="548" r="4" fill="#378ADD"/><text x="160" y="548" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">בקשת חיפוש</text>
-<circle cx="250" cy="548" r="4" fill="#1D9E75"/><text x="260" y="548" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">פנייה למטמון ולאינדקס</text>
+<circle cx="40" cy="565" r="4" fill="#EF9F27"/><text x="50" y="565" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">הודעת סנכרון</text>
+<circle cx="150" cy="565" r="4" fill="#378ADD"/><text x="160" y="565" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">בקשת חיפוש</text>
+<circle cx="250" cy="565" r="4" fill="#1D9E75"/><text x="260" y="565" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">מטמון ואינדקס</text>
+<circle cx="355" cy="565" r="4" fill="#E24B4A"/><text x="365" y="565" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">מעל המגבלה</text>
+<line x1="450" y1="565" x2="475" y2="565" stroke="#0F6E56" stroke-width="1.2" stroke-dasharray="4 3"/><text x="482" y="565" text-anchor="start" dominant-baseline="central" font-size="12" font-weight="400" fill="#444441">בדיקת מגבלה</text>
 </svg>
