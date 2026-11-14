@@ -109,8 +109,25 @@ public sealed partial class SearchEngine
             .ToList();
     }
 
-    public static List<string> QueryWords(string query) =>
-        WordRegex().Matches(query).Select(m => Normalize(m.Value)).Where(w => w.Length >= 2).ToList();
+    /// <summary>
+    /// Words that carry no topic in a natural question ("כמה", "אני רוצה", "מה צריך"). They are ignored
+    /// in the query, because they almost never appear in an instruction and would otherwise stop a
+    /// section from matching all the words. A fixed short list; a model would replace it later.
+    /// </summary>
+    private static readonly HashSet<string> FillerWords = new[]
+    {
+        "אני", "אנחנו", "רוצה", "רוצים", "רוצות", "כמה", "מה", "מי", "איפה", "איך", "למה", "מתי", "האם",
+        "צריך", "צריכה", "צריכים", "כדי", "אפשר", "יש", "לי", "לנו", "את", "של", "על", "עם", "או", "אם",
+        "גם", "זה", "זאת", "זו", "הוא", "היא", "הם", "הן", "בבקשה",
+    }.Select(Normalize).ToHashSet(StringComparer.Ordinal);
+
+    /// <summary>Normalized query words without filler words. A query made only of filler keeps all its words.</summary>
+    public static List<string> QueryWords(string query)
+    {
+        var all = WordRegex().Matches(query).Select(m => Normalize(m.Value)).Where(w => w.Length >= 2).ToList();
+        var content = all.Where(w => !FillerWords.Contains(w)).ToList();
+        return content.Count > 0 ? content : all;
+    }
 
     /// <summary>Terms stored for one word of the text: the word, and the word without a leading prefix letter.</summary>
     private static IEnumerable<string> IndexTerms(string token)

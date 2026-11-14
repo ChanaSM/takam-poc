@@ -55,6 +55,20 @@ public static class SearchTests
     }
 
     [Test]
+    public static void Filler_words_are_dropped_from_the_query()
+    {
+        Check.Equal("כיבוד", string.Join(",", SearchEngine.QueryWords("אני רוצה כיבוד")), "content words");
+        Check.Equal("מה,זה", string.Join(",", SearchEngine.QueryWords("מה זה")), "a query of only filler keeps its words");
+    }
+
+    [Test]
+    public static async Task Natural_question_finds_the_section_despite_filler_words()
+    {
+        var found = Found((await Fixtures.Engine()).Search("אני רוצה כיבוד לישיבה"));
+        Check.True(found.Contains(("15.4.3", "2.8")), "15.4.3 §2.8 is a full match once 'אני רוצה' is ignored");
+    }
+
+    [Test]
     public static async Task Multi_word_query_ranks_the_right_clause_first()
     {
         var hit = (await Fixtures.Engine()).Search("מרצה עובד מדינה בשעות העבודה")[0];
